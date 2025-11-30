@@ -1,38 +1,17 @@
-# sv
+# Rooted Website Remake
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Converted the project to svelte
 
-## Creating a project
+Remade the website with new features like a modal, more css and more images.
 
-If you're seeing this, you've probably already done this step. Congrats!
+Made the map full width to look better.
 
-```sh
-# create a new project in the current directory
-npx sv create
+## What is Rooted
 
-# create a new project in my-app
-npx sv create my-app
-```
+A week-long coding camp for teens in Denmark, organized with BornHack and Hack Club. Check it out at [Rooted!](https://rooted.hackclub.com)
 
-## Developing
+If your on Slack then head over to [#rooted](https://hackclub.slack.com/archives/C09LYU1S23Y) to RSVP!
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+A simple HTML and CSS landing page for Rooted.
 
-```sh
-npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
-
-## Building
-
-To create a production version of your app:
-
-```sh
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://svelte.dev/docs/kit/adapters) for your target environment.
+_Name changed from **camp** to **Rooted**_
