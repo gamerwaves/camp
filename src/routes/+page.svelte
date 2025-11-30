@@ -1,10 +1,11 @@
 <style>
 :global(:root){
-  --hero-bg:#fff;
+  --hero-bg:#ec3750;
   --accent:#041104;
   --slack:#4A154B;
   --text-dark:#111;
   --muted-white:rgba(255,255,255,0.9);
+  overflow-x: hidden;
 }
 
 *{box-sizing:border-box}
@@ -17,6 +18,16 @@
   color:var(--text-dark);
   scroll-behavior:smooth;
   background-color:var(--hero-bg);
+}
+
+:global(a){
+  text-decoration: none;
+  border-bottom: 2px solid #275527;
+  transition: border-bottom-width 0.2s ease;
+}
+
+:global(a:hover){
+  border-bottom-width: 4px;
 }
 
 .hero{
@@ -53,11 +64,12 @@
   margin:0 0 1rem;
   font-weight:600;
   letter-spacing:0.5px;
+  font-size:clamp(2rem, 8vw, 3rem);
 }
 
 :global(p){
   text-align:center;
-  font-size:20px;
+  font-size:clamp(16px, 4vw, 20px);
   color:#fff;
   margin:0.25rem 0;
 }
@@ -67,7 +79,7 @@
   text-align:center;
   color:#fff;
   font-style:italic;
-  font-size:18px;
+  font-size:clamp(14px, 3.5vw, 18px);
   margin:0.5rem 0 1rem 0;
 }
 
@@ -78,14 +90,6 @@
 }
 
 :global(button){
-  display:block;
-  margin:40px auto;
-  padding:10px 20px;
-  font-size:16px;
-  background-color:#041104;
-  color:white;
-  border:none;
-  border-radius:30px;
   cursor:pointer;
 }
 
@@ -94,11 +98,11 @@
   border:5px solid rgb(193,255,187);
   text-decoration:none;
   display:inline-block;
-  padding:20px 25px;
+  padding:clamp(12px, 3vw, 20px) clamp(16px, 4vw, 25px);
   background-color:#275527;
   border-radius:30px;
   font-style:italic;
-  font-size:larger;
+  font-size:clamp(14px, 3.5vw, 18px);
   margin:0;
   transition:transform 0.15s ease,background-color 0.15s ease;
 }
@@ -115,10 +119,11 @@
 
 .undertext{
   text-align:center;
-  font-size:15px;
+  font-size:clamp(13px, 3vw, 15px);
   color:#fff;
   font-style:italic;
   margin:0.25rem 0;
+  padding:0 1rem;
 }
 
 .hackclub{
@@ -133,7 +138,8 @@
   color:#cec9c9;
   font-weight:bold;
   font-style:italic;
-  font-size:small;
+  font-size:clamp(12px, 2.5vw, 14px);
+  padding:0 1rem;
 }
 
 .details-page{
@@ -162,15 +168,15 @@
 }
 
 @media(max-width:600px){
-  .button2,button{padding:8px 12px;font-size:15px}
   .details-inner{padding:0 1rem}
-  .rooted-image{max-width:60%;}
+  .rooted-image{max-width:70%;}
+  :global(h1){font-size:2rem;margin:15px;}
 }
 
 .faq{
   margin:0 1rem 1.5rem auto;
   padding-left:1rem;
-  font-size:1.5rem;
+  font-size:clamp(1.25rem, 5vw, 1.5rem);
   text-align:center;
   color:#111;
   font-style:italic;
@@ -187,8 +193,9 @@
 
 @media(max-width:600px){
   .details-inner{padding:2rem 1rem}
-  .faq{margin-right:0.6rem;padding-left:0.7rem;font-size:1.25rem}
-  .details-inner dl dt{margin-top:0.9rem}
+  .faq{margin-right:0.6rem;padding-left:0.7rem;}
+  .details-inner dl dt{margin-top:0.9rem;font-size:1rem;}
+  .details-inner dl dd{font-size:0.9rem;}
 }
 
 :global(.footer){
@@ -215,9 +222,8 @@
 }
 
 @media(max-width:600px){
-  .top-button{top:12px;right:12px;padding:8px 12px}
+  .top-button{top:12px;right:12px;}
   .button-row{gap:0.4rem}
-  .button2{padding:8px 12px}
 }
 
 .modal{
@@ -238,7 +244,7 @@
   position:relative;
   background:#fff;
   color:#111;
-  width:min(1000px,calc(100% - 3rem));
+  width:min(1000px,calc(100% - 2rem));
   max-height:90vh;
   overflow:auto;
   border-radius:12px;
@@ -257,6 +263,11 @@
   line-height:1;
   cursor:pointer;
 }
+
+.top-button, .modal-close {
+  display:inline-block !important;
+  margin:0 !important;
+}
 .details-images{
   display:grid;
   grid-template-columns:repeat(5, 1fr);
@@ -274,8 +285,9 @@
 }
 
 @media(max-width:600px){
-  .modal-content{padding:1rem}
-  .details-images{grid-template-columns:repeat(2, 1fr);}
+  .modal-content{padding:1rem;width:calc(100% - 1rem);}
+  .details-images{grid-template-columns:repeat(2, 1fr);gap:0.3rem;padding:0.5rem;}
+  .modal-close{font-size:1.2rem;border-width:3px;}
 }
 .details-page{
   background-color: #ec3750;
@@ -286,35 +298,125 @@
     flex-direction: column;
     align-items: center;
     text-align: center;
-    font-size: 20px;
+    font-size:clamp(16px, 4vw, 20px);
     font-style: italic;
     margin-top: 20px;
+    width: 100%;
+    padding:0 1rem;
+}
+
+.carousel-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap:clamp(5px, 2vw, 10px);
+    width: 100%;
+    max-width: 1200px;
+}
+
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    overflow: visible;
+    padding: 40px 0;
+}
+
+.carousel-track {
+    position: relative;
+    width: 100%;
+    height: 300px;
+    display: flex;
+}
+
+.carousel-item {
+    position: absolute;
+    left: 50%;
+    top: 0;
+    width: 100%;
+    max-width: 450px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.6s ease, opacity 0.6s ease;
+    transform-origin: center;
+}
+
+.carousel-button {
+    background-color: #275527 !important;
+    color: rgb(193, 255, 187) !important;
+    border: 3px solid rgb(193, 255, 187) !important;
+    border-radius: 8px !important;
+    width:clamp(40px, 10vw, 50px) !important;
+    height:clamp(40px, 10vw, 50px) !important;
+    font-size:clamp(20px, 5vw, 28px) !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    padding: 0 !important;
+    flex-shrink: 0 !important;
+    margin: 0 !important;
+    z-index: 100 !important;
+    position: relative !important;
+    pointer-events: auto !important;
+}
+
+.carousel-button:hover {
+    background-color: #193b1a !important;
+    transform: scale(1.1) !important;
+}
+
+.carousel-dots {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    aspect-ratio: 1 / 1;
+}
+
+.carousel-dot {
+  aspect-ratio: 1 / 1;
+    width: 12px;
+    height: 12px;
+    border-radius: 100%;
+    background-color: rgba(91, 192, 222, 0.4);
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+    background-color: #5bc0de;
 }
 
 .orgtitle {
     font-weight: bold;
-    font-size: 40px;
-    margin-top: 60px;
+    font-size:clamp(28px, 7vw, 40px);
+    margin-top:clamp(30px, 8vw, 60px);
     margin-bottom: 20px;
     text-align: center;
-    
-
 }
 
 .orgname {
     background-color: #5bc0de;
     border-radius: 25px;
-    padding: 20px;
+    padding:clamp(20px, 5vw, 30px);
     margin-bottom: 20px;
     align-items: center;
-    font-size: 30px;
+    font-size:clamp(14px, 3.5vw, 18px);
     display: flex;
+    flex-direction: column;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: fit-content;
-    height: inherit;
+    max-width:clamp(280px, 80vw, 400px);
     text-decoration: none;
     color: inherit;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-align: center;
 }
 
 .orgname:hover {
@@ -323,12 +425,22 @@
 }
 
 .orgname img {
-    height: 100px;
-    width: 100px;
+    height:clamp(80px, 20vw, 120px);
+    width:clamp(80px, 20vw, 120px);
     border-radius: 50%;
-    vertical-align: middle;
-    margin-right: 15px;
-    padding: 10px;
+    margin-bottom: 15px;
+    padding: 0;
+}
+
+.orgname h3 {
+    font-weight: bold;
+    font-size:clamp(20px, 5vw, 28px);
+    margin: 0 0 10px 0;
+}
+
+.orgname dd {
+    margin: 0;
+    line-height: 1.5;
 }
 
 .hackclub-banner {
@@ -336,6 +448,11 @@
     top: 20px;
     left: 0;
     z-index: 15;
+    border-bottom: none !important;
+}
+
+.hackclub-banner:hover {
+    border-bottom: none !important;
 }
 
 .hackclub-banner img {
@@ -353,12 +470,27 @@
 .map-container {
   margin-top: 20px;
   width: 100%;
-  height: 600px;
+  height:clamp(300px, 60vh, 600px);
 }
 
 .map-container iframe {
   width: 100%;
   height: 100%;
+}
+
+@media(max-width:600px){
+  .map-container{height:300px;}
+}
+
+footer{
+  background-color: #ff8c37;
+  text-align: center;
+  padding: 1rem;
+}
+
+footer p{
+  font-size:clamp(14px, 3vw, 16px);
+  padding:0 1rem;
 }
 
 </style>
@@ -389,8 +521,8 @@
                         <h2 id="faq-title" class="faq">rooted FAQ</h2>
                         <dl>
                                 <dt>What is BornHack?</dt>
-                                <dd>BornHack is an annual week-long hacker rooted held on the Danish island of Funen. You will build projects amongst other teens! Visit the official site here: <a href="https://bornhack.dk/bornhack-2025/">https://bornhack.dk/bornhack-2025/</a></dd>
 
+                                <dd>BornHack is an annual week-long hacker rooted held on the Danish island of Funen. You will build projects amongst other teens! Visit the official site here: <a href="https://bornhack.dk/bornhack-2026/">https://bornhack.dk/bornhack-2026/</a></dd>
                                 <dt>What is Hack Club?</dt>
                                 <dd>Hack Club is a global community of teenage hackers who love building and coding things. We run clubs, events, and projects around the world to help teens learn, create, and connect.</dd>
 
@@ -398,7 +530,7 @@
                                 <dd>BornHack 2026 will likely take place in July 2026 (exact dates to be confirmed). The event usually runs for about a week.</dd>
 
                                 <dt>My parents are nervous about me attending. How can I reassure them?</dt>
-                                <dd>That's totally understandable! BornHack is a safe environment, which has been run many times. See more information about <a href="https://bornhack.dk/bornhack-2024/">their previous event</a>! We'll also provide parents with full transparency about accommodations and travel.</dd>
+                                <dd>That's totally understandable! BornHack is a safe environment, which has been run many times. See more information about <a href="https://bornhack.dk/bornhack-2025/">their previous event</a>! We'll also provide parents with full transparency about accommodations and travel.</dd>
 
                                 <dt>How can we trust Hack Club?</dt>
                                 <dd>Hack Club is a 501(c)(3) nonprofit organization. Thousands of students around the world are part of Hack Club, and our finances are completely public and open-source. We've safely run major events like Hack Club Arcade, Assemble, Epoch, and Hack Rooted, all designed for teens and supported by our trusted adult mentors. You can learn more about us at <a href="https://hackclub.com">https://hackclub.com</a>.</dd>
@@ -432,33 +564,35 @@
     <div class="details-page">
       <div class="organisers">
         <h2 class="orgtitle">Organisers</h2>
-        <a href="https://hackclub.enterprise.slack.com/team/U0938MZG8Q6" class="orgname">
-            <img src="https://ca.slack-edge.com/T0266FRGM-U0938MZG8Q6-118e1c7a1f11-512" alt="Slack pfp for @Christian">
-            <h3>Christian</h3>
-            <dd>Christian is a passionate coder and the lead organiser of Rooted.</dd>
-        </a>
-        <a href="https://hackclub.enterprise.slack.com/team/U08NXJL86KT" class="orgname">
-            <img src="https://ca.slack-edge.com/T0266FRGM-U08NXJL86KT-325f8f9f4f9b-512" alt="Slack pfp for @Frog">
-            <h3>Frog</h3>
-            <dd>Frog is an active community member, passionate hardware maker.</dd>
-        </a>
-        <a href="https://hackclub.enterprise.slack.com/team/U078VN0UU2K" class="orgname">
-            <img src="https://ca.slack-edge.com/T0266FRGM-U078VN0UU2K-40da09402b3d-512" alt="Slack pfp for @Freddie">
-            <h3>Freddie</h3>
-            <dd>Freddie is an enthusiastic developer for Rooted.</dd>
-        </a>
-        <a href="https://hackclub.enterprise.slack.com/team/U059VC0UDEU" class="orgname">
-            <img src="https://ca.slack-edge.com/T0266FRGM-U059VC0UDEU-81a3d8975b81-512" alt="Slack pfp for @Mahad">
-            <h3>Mahad</h3>
-            <dd>Mahad is a dedicated hacker/Coder.</dd>
-        </a>
-        <a href="https://hackclub.enterprise.slack.com/team/U06T30DNB3L" class="orgname">
-            <img src="https://ca.slack-edge.com/T0266FRGM-U06T30DNB3L-13d0d6e57152-512" alt="Slack pfp for @Euan Ripper">
-            <h3>Euan Ripper</h3>
-            <dd>Euan is HQ and involved in Rooted!</dd>
-        </a>
+        <div class="carousel-wrapper">
+            <button class="carousel-button prev" on:click={prevSlide} aria-label="Previous organizer">←</button>
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    {#each organizers as organizer, i}
+                        {@const offset = (i - currentSlide + totalSlides) % totalSlides}
+                        {@const adjustedOffset = offset > totalSlides / 2 ? offset - totalSlides : offset}
+                        <div class="carousel-item" style="transform: translateX({adjustedOffset * 100 - 50}%); opacity: {adjustedOffset === 0 ? 1 : Math.abs(adjustedOffset) === 1 ? 0.3 : 0}; pointer-events: {adjustedOffset === 0 ? 'auto' : 'none'}; z-index: {adjustedOffset === 0 ? 10 : 1};">
+                            <a href={organizer.link} class="orgname">
+                                <img src={organizer.image} alt="Slack pfp for @{organizer.name}">
+                                <h3>{organizer.name}</h3>
+                                <dd>{organizer.description}</dd>
+                            </a>
+                        </div>
+                    {/each}
+                </div>
+            </div>
+            <button class="carousel-button next" on:click={nextSlide} aria-label="Next organizer">→</button>
+        </div>
+        <div class="carousel-dots" style="margin-top: 50px;">
+            {#each Array(6) as _, i}
+                <button class="carousel-dot" class:active={currentSlide === i} on:click={() => goToSlide(i)} aria-label="Go to slide {i + 1}"></button>
+            {/each}
+        </div>
       </div>
     </div>
+<footer>
+    <p><i>Made with ❤️ by Christian & Freddie. Remade in Svelte by Dwait.</i></p>
+</footer>
 <script lang="ts">
     import { onMount, tick } from 'svelte';
 
@@ -466,6 +600,60 @@
     let previousActive: HTMLElement | null = null;
     let modalEl: HTMLElement | null = null;
     let closeBtnEl: HTMLButtonElement | null = null;
+    let currentSlide = 0;
+    
+    const organizers = [
+        {
+            name: "Christian",
+            link: "https://hackclub.enterprise.slack.com/team/U0938MZG8Q6",
+            image: "https://ca.slack-edge.com/T0266FRGM-U0938MZG8Q6-118e1c7a1f11-512",
+            description: "Christian is a passionate coder and the lead organiser of Rooted."
+        },
+        {
+            name: "Frog",
+            link: "https://hackclub.enterprise.slack.com/team/U08NXJL86KT",
+            image: "https://ca.slack-edge.com/T0266FRGM-U08NXJL86KT-325f8f9f4f9b-512",
+            description: "Frog is an active community member, passionate hardware maker."
+        },
+        {
+            name: "Freddie",
+            link: "https://hackclub.enterprise.slack.com/team/U078VN0UU2K",
+            image: "https://ca.slack-edge.com/T0266FRGM-U078VN0UU2K-40da09402b3d-512",
+            description: "Freddie is an enthusiastic developer for Rooted."
+        },
+        {
+            name: "Mahad",
+            link: "https://hackclub.enterprise.slack.com/team/U059VC0UDEU",
+            image: "https://ca.slack-edge.com/T0266FRGM-U059VC0UDEU-81a3d8975b81-512",
+            description: "Mahad is a dedicated hacker/Coder."
+        },
+        {
+            name: "Euan Ripper",
+            link: "https://hackclub.enterprise.slack.com/team/U06T30DNB3L",
+            image: "https://ca.slack-edge.com/T0266FRGM-U06T30DNB3L-13d0d6e57152-512",
+            description: "Euan is HQ and involved in Rooted!"
+        },
+        {
+            name: "Dwait Pandhi",
+            link: "https://hackclub.enterprise.slack.com/team/U0847KFMUSC",
+            image: "https://ca.slack-edge.com/E09V59WQY1E-U0847KFMUSC-b6c5e431ba64-512",
+            description: "The maker of this remade website!"
+        }
+    ];
+    
+    const totalSlides = organizers.length;
+
+    function nextSlide() {
+        currentSlide = (currentSlide + 1) % totalSlides;
+    }
+
+    function prevSlide() {
+        currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+    }
+
+    function goToSlide(index: number) {
+        currentSlide = index;
+    }
 
     async function openModal() {
         previousActive = document.activeElement as HTMLElement | null;
