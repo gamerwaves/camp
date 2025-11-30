@@ -20,7 +20,7 @@
 }
 
 .hero{
-  background-image:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url("night_stars_lights.jpg");
+  background-image:linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),url("https://s6.imgcdn.dev/YPnPhn.jpg");
   background-repeat:no-repeat;
   background-position:right 75%;
   background-size:cover;
